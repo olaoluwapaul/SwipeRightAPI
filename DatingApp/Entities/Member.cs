@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace DatingApp.Entities
 {
@@ -15,9 +16,11 @@ namespace DatingApp.Entities
         public required string City { get; set; }
         public required string Country { get; set; }
 
+        [JsonIgnore]
         public List<Photo> Photos { get; set; } = [];
 
         // Navigation property
+        [JsonIgnore]
         [ForeignKey(nameof(Id))]
         public AppUser User { get; set; } = null!;
     }
